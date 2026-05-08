@@ -1,0 +1,1 @@
+# jead000jpn.github.io
