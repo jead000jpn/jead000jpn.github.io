@@ -4,6 +4,14 @@
     font-display: swap;
   }
 
+
+  title {
+    font-family: "Saitamaar";
+    white-space: noswap;
+    font-size: 24px;
+    background-color:#3f51b5;
+  }
+
   div {
     font-family: "Saitamaar";
     white-space: noswap;
