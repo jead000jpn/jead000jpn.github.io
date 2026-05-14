@@ -18,6 +18,19 @@
 				 font-weight:400;font-stretch:normal
 				}
 
+  @font-face {
+    font-family: "Saitamaar";
+    src: url("https://raw.githubusercontent.com/asciiart-development/SaitamaarFont/main/fonts/webfonts/Saitamaar-Regular.woff2") format("woff2");
+    font-display: swap;
+  }
+
+  div {
+    font-family: "Saitamaar";
+    white-space: noswap;
+    font-size: 16px;
+    line-height: 18px;
+  }
+
         .links {
             display: flex;
             gap: 20px;
