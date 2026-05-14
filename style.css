@@ -46,16 +46,5 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-.column {
-  float: left;
-  width: 50%;
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
 
 </style>
