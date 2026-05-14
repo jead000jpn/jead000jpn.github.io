@@ -17,6 +17,15 @@
     border: 1px solid;
   }
 
+  .index_R {
+    font-family: "Saitamaar";
+    white-space: noswap;
+    font-size: 24px;
+    color: #ffffff;
+    background-color: #af6cb7;
+    border: 1px solid;
+  }
+
   div {
     font-family: "Saitamaar";
     white-space: noswap;
