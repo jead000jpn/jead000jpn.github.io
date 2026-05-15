@@ -6,6 +6,7 @@
 
   .AA_Text {
   width: max-content;
+  background-color:#f8f8f9;
   }
 
   .index {
@@ -31,7 +32,6 @@
     white-space: noswap;
     font-size: 16px;
     line-height: 18px;
-    background-color:#f8f8f9;
   }
 
   
