@@ -11,9 +11,15 @@ Icon: https://semantic-ui.com/elements/icon.html  http://fortawesome.github.io/F
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="https://jead000jpn.github.io/style.css">
-        <link rel="stylesheet" href="//pulipulichen.github.io/blogger/posts/2016/12/semantic/semantic.min.css" />
+        <link rel="stylesheet" href="style.css" />
         
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>        
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin" />
+        
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+        <link rel="stylesheet" href="//pulipulichen.github.io/blogger/posts/2016/12/semantic/semantic.min.css" />
+        <link rel="stylesheet" href="vender/font-awesome.css" />
+        <script src="//pulipulichen.github.io/blogger/posts/2016/12/semantic/semantic.min.js"></script>
+        
         <script src="vender/clipboard.min.js"></script>
         <script src="vender/puli-util.clipboard.js"></script>
         
@@ -32,7 +38,7 @@ Icon: https://semantic-ui.com/elements/icon.html  http://fortawesome.github.io/F
         
         <script src="url-parameter-utils.js"></script>
     </head>
-    <body>
+    <body class="AA_Text">
 
 <form class="ui form">
 <div class="ui two column grid">
@@ -56,7 +62,7 @@ Icon: https://semantic-ui.com/elements/icon.html  http://fortawesome.github.io/F
     <input type="text" name="file_name" id="file_name" placeholder="File Name" value="file name {timestamp}">
 </div>
 
-<textarea class="AA_Text">Content</textarea>
+<textarea id="file_content">Content</textarea>
 
 <div class="ui four column grid">
     <div class="four wide column">
