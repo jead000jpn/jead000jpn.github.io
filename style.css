@@ -91,5 +91,6 @@ textarea {
   white-space: noswap;
   font-size: 16px;
   line-height: 18px;
+  resize: both;
 }
 </style>
