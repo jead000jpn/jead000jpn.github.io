@@ -32,10 +32,10 @@
   }
 
   div {
-    font-family: "Saitamaar";
-    white-space: noswap;
-    font-size: 16px;
-    line-height: 18px;
+    font-family: "Saitamaar" !important; 
+    white-space: noswap !important; 
+    font-size: 16px !important; 
+    line-height: 18px !important; 
   }
 
   
