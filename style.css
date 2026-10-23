@@ -85,4 +85,11 @@
       table li {
   margin-bottom: 5px;
         }
+
+textarea {
+  font-family: "Saitamaar";
+  white-space: noswap;
+  font-size: 16px;
+  line-height: 18px;
+}
 </style>
