@@ -32,10 +32,10 @@
   }
 
   div {
-    font-family: "Saitamaar" !important; 
-    white-space: noswap !important; 
-    font-size: 16px !important; 
-    line-height: 18px !important; 
+    font-family: "Saitamaar" ; 
+    white-space: noswap ; 
+    font-size: 16px ; 
+    line-height: 18px ; 
   }
 
   
@@ -86,11 +86,4 @@
   margin-bottom: 5px;
         }
 
-textarea {
-  font-family: "Saitamaar";
-  white-space: noswap;
-  font-size: 16px;
-  line-height: 18px;
-  resize: both;
-}
 </style>
