@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>章節閱讀器</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f4f4f9;
+        }
+        .controls {
+            margin-bottom: 15px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        button {
+            padding: 8px 16px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        iframe {
+            width: 100%;
+            height: 90vh;
+            border: 1px solid #ccc;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="controls">
+		<p><a href="https://jead000jpn.github.io" target="_blank">返回首頁</a></p>
+        <button id="prevBtn" onclick="changeChapter(-1)">上一話</button>
+        <span id="chapterTitle">目前：外傳第 1 話</span>
+        <button id="nextBtn" onclick="changeChapter(1)">下一話</button>
+		<p><a href="https://jead000jpn.github.io/gallery/new_megaten_player.html" target="_blank">返回作品目錄</a></p>
+    </div>
+
+    <!-- 預設載入 new_megaten_player_EX1.html -->
+    <iframe id="contentFrame" src="new_megaten_player_EX1.html"></iframe>
+
+    <script>
+        // 設定目前的集數與總集數
+        let currentChapter = 1;
+        const minChapter = 1;
+        const maxChapter = 18; // 【重要】請改成你實際的最大話數，例如有1到5就填 5
+
+        const iframe = document.getElementById('contentFrame');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const chapterTitle = document.getElementById('chapterTitle');
+
+        // 初始化按鈕狀態
+        updateButtons();
+
+        function changeChapter(step) {
+            const next = currentChapter + step;
+
+            // 檢查是否超出範圍
+            if (next >= minChapter && next <= maxChapter) {
+                currentChapter = next;
+                // 組合新的檔名並更新 iframe
+                iframe.src = `new_megaten_player_EX${currentChapter}.html`;
+                chapterTitle.textContent = `目前：第 ${currentChapter} 話`;
+                updateButtons();
+            }
+        }
+
+        function updateButtons() {
+            // 如果在第一話，禁用「上一話」按鈕
+            prevBtn.disabled = (currentChapter <= minChapter);
+            // 如果在最後一話，禁用「下一話」按鈕
+            nextBtn.disabled = (currentChapter >= maxChapter);
+        }
+    </script>
+
+</body>
+</html>
