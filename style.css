@@ -104,7 +104,7 @@
             flex-wrap: wrap; /* 讓手機版螢幕較窄時可以自動換行 */
             justify-content: center;
         }
-        button {
+        .button {
             padding: 8px 16px;
             font-size: 16px;
             cursor: pointer;
@@ -113,12 +113,12 @@
             border: none;
             border-radius: 5px;
         }
-        button:disabled {
+        .button:disabled {
             background-color: #cccccc;
             cursor: not-allowed;
         }
         /* 【新增】下拉選單的樣式 */
-        select {
+        .select {
             padding: 8px 12px;
             font-size: 16px;
             border-radius: 5px;
@@ -126,7 +126,8 @@
             background-color: white;
             cursor: pointer;
         }
-        iframe {
+
+        #contentFrame {
             width: 80dvw;
             height: 80dvh;
             border: 1px solid #ccc;
