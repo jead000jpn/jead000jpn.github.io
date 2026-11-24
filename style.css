@@ -118,7 +118,7 @@
             cursor: not-allowed;
         }
         /* 【新增】下拉選單的樣式 */
-        .select {
+        #chapterSelect {
             padding: 8px 12px;
             font-size: 16px;
             border-radius: 5px;
