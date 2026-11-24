@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<link rel="stylesheet" type="text/css" href="https://jead000jpn.github.io/style.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>章節閱讀器</title>    
+  <meta charset="utf-8">
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+    <div class="controls">
+        <button id="prevBtn" onclick="changeChapter(-1)">上一話</button>        
+        <!-- 【修改】將原本的文字改成下拉選單，並加入 onchange 事件 -->
+        <select id="chapterSelect" onchange="jumpToChapter(this.value)"></select>        
+        <button id="nextBtn" onclick="changeChapter(1)">下一話</button>
+    </div>
+
+    <div align="center">
+        <p>
+        <a href="../../" target="_blank">返回首頁</a> | 
+        <a href="../../gallery/異世界生活愉快.html" target="_blank">返回作品目錄</a>
+    	</p>
+    </div>
+    
+    <!-- 預設載入 soldier_man_1.html -->
+    <div align="center"><iframe id="contentFrame" src="soldier_man_1.html"></iframe></div>
+
+    <script>
+        // 設定目前的集數與總集數
+        let currentChapter = 1;
+        const minChapter = 1;
+        const maxChapter = 3; // 【重要】請改成你實際的最大話數，例如有1到5就填 5
+
+        const iframe = document.getElementById('contentFrame');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const chapterSelect = document.getElementById('chapterSelect'); // 【新增】取得下拉選單
+
+        // 【新增】動態生成第 1 話到第 maxChapter 話的選項
+        function initSelectOptions() {
+            for (let i = minChapter; i <= maxChapter; i++) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = `目前：第 ${i} 話`;
+                chapterSelect.appendChild(option);
+            }
+        }
+
+        // 初始化選單與按鈕狀態
+        initSelectOptions();
+        updateUI();
+
+        // 上一話 / 下一話 按鈕觸發
+        function changeChapter(step) {
+            jumpToChapter(currentChapter + step);
+        }
+
+        // 【新增】核心跳轉功能（不管是按上下話，還是選單跳轉，都統一走這裡）
+        function jumpToChapter(targetChapter) {
+            const chapter = parseInt(targetChapter, 10); // 確保轉成數字
+
+            // 檢查是否超出範圍
+            if (chapter >= minChapter && chapter <= maxChapter) {
+                currentChapter = chapter;
+                // 組合新的檔名並更新 iframe
+                iframe.src = `soldier_man_${currentChapter}.html`;
+                updateUI();
+            }
+        }
+
+        // 【修改】統一更新畫面狀態（按鈕禁用狀態 + 下拉選單當前選項）
+        function updateUI() {
+            prevBtn.disabled = (currentChapter <= minChapter);
+            nextBtn.disabled = (currentChapter >= maxChapter);
+            chapterSelect.value = currentChapter; // 讓下拉選單同步顯示目前的話數
+        }
+    </script>
+
+</body>
+</html>
