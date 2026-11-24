@@ -1,59 +1,16 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+<link rel="stylesheet" type="text/css" href="https://jead000jpn.github.io/style.css">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>章節閱讀器</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: #f4f4f9;
-        }
-        .controls {
-            margin-bottom: 15px;
-            display: flex;
-            gap: 15px;
-            align-items: center;
-            flex-wrap: wrap; /* 讓手機版螢幕較窄時可以自動換行 */
-            justify-content: center;
-        }
-        button {
-            padding: 8px 16px;
-            font-size: 16px;
-            cursor: pointer;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-        }
-        button:disabled {
-            background-color: #cccccc;
-            cursor: not-allowed;
-        }
-        /* 【新增】下拉選單的樣式 */
-        select {
-            padding: 8px 12px;
-            font-size: 16px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            background-color: white;
-            cursor: pointer;
-        }
-        iframe {
-            width: 80dvw;
-            height: 80dvh;
-            border: 1px solid #ccc;
-            background-color: white;
-        }
-    </style>
+    <title>章節閱讀器</title>    
+  <meta charset="utf-8">
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
-
     <div class="controls">
         <button id="prevBtn" onclick="changeChapter(-1)">上一話</button>        
         <!-- 【修改】將原本的文字改成下拉選單，並加入 onchange 事件 -->
@@ -61,16 +18,16 @@
         <button id="nextBtn" onclick="changeChapter(1)">下一話</button>
     </div>
 
-    <div>
+    <div align="center">
         <p>
         <a href="../../" target="_blank">返回首頁</a> | 
         <a href="../../gallery/new_megaten_player.html" target="_blank">返回作品目錄</a> | 
-        <a href="new_megaten_player_EX_reader.html" target="_blank">進入外傳閱讀器</a>
-    </p>
+        <a href="new_megaten_player_reader.html" target="_blank">進入本傳閱讀器</a>
+    	</p>
     </div>
     
     <!-- 預設載入 new_megaten_player_1.html -->
-    <iframe id="contentFrame" src="new_megaten_player_1.html"></iframe>
+    <div align="center"><iframe id="contentFrame" src="new_megaten_player_1.html"></iframe></div>
 
     <script>
         // 設定目前的集數與總集數
