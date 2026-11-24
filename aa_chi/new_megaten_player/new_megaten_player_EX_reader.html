@@ -19,6 +19,8 @@
             display: flex;
             gap: 15px;
             align-items: center;
+            flex-wrap: wrap; /* 讓手機版螢幕較窄時可以自動換行 */
+            justify-content: center;
         }
         button {
             padding: 8px 16px;
@@ -33,9 +35,18 @@
             background-color: #cccccc;
             cursor: not-allowed;
         }
+        /* 【新增】下拉選單的樣式 */
+        select {
+            padding: 8px 12px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: white;
+            cursor: pointer;
+        }
         iframe {
-            width: 100vh;
-            height: 90vh;
+            width: 80dvw;
+            height: 80dvh;
             border: 1px solid #ccc;
             background-color: white;
         }
@@ -44,17 +55,24 @@
 <body>
 
     <div class="controls">
-		<p><a href="../../" target="_blank">返回首頁</a></p>
         <button id="prevBtn" onclick="changeChapter(-1)">上一話</button>
-        <span id="chapterTitle">目前：外傳第 1 話</span>
+        <!-- 【修改】將原本的文字改成下拉選單，並加入 onchange 事件 -->
+        <select id="chapterSelect" onchange="jumpToChapter(this.value)"></select>   
         <button id="nextBtn" onclick="changeChapter(1)">下一話</button>
-		<p><a href="../../gallery/new_megaten_player.html" target="_blank">返回作品目錄</a></p>
+    </div>
+
+    <div>
+        <p>
+        <a href="../../" target="_blank">返回首頁</a> | 
+        <a href="../../gallery/new_megaten_player.html" target="_blank">返回作品目錄</a> | 
+        <a href="new_megaten_player_reader.html" target="_blank">進入本傳閱讀器</a>
+    	</p>
     </div>
 
     <!-- 預設載入 new_megaten_player_EX1.html -->
     <iframe id="contentFrame" src="new_megaten_player_EX1.html"></iframe>
 
-    <script>
+<script>
         // 設定目前的集數與總集數
         let currentChapter = 1;
         const minChapter = 1;
@@ -63,29 +81,45 @@
         const iframe = document.getElementById('contentFrame');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
-        const chapterTitle = document.getElementById('chapterTitle');
+        const chapterSelect = document.getElementById('chapterSelect'); // 【新增】取得下拉選單
 
-        // 初始化按鈕狀態
-        updateButtons();
-
-        function changeChapter(step) {
-            const next = currentChapter + step;
-
-            // 檢查是否超出範圍
-            if (next >= minChapter && next <= maxChapter) {
-                currentChapter = next;
-                // 組合新的檔名並更新 iframe
-                iframe.src = `new_megaten_player_EX${currentChapter}.html`;
-                chapterTitle.textContent = `目前：第 ${currentChapter} 話`;
-                updateButtons();
+        // 【新增】動態生成第 1 話到第 maxChapter 話的選項
+        function initSelectOptions() {
+            for (let i = minChapter; i <= maxChapter; i++) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = `目前：外傳第 ${i} 話`;
+                chapterSelect.appendChild(option);
             }
         }
 
-        function updateButtons() {
-            // 如果在第一話，禁用「上一話」按鈕
+        // 初始化選單與按鈕狀態
+        initSelectOptions();
+        updateUI();
+
+        // 上一話 / 下一話 按鈕觸發
+        function changeChapter(step) {
+            jumpToChapter(currentChapter + step);
+        }
+
+        // 【新增】核心跳轉功能（不管是按上下話，還是選單跳轉，都統一走這裡）
+        function jumpToChapter(targetChapter) {
+            const chapter = parseInt(targetChapter, 10); // 確保轉成數字
+
+            // 檢查是否超出範圍
+            if (chapter >= minChapter && chapter <= maxChapter) {
+                currentChapter = chapter;
+                // 組合新的檔名並更新 iframe
+                iframe.src = `new_megaten_player_EX${currentChapter}.html`;
+                updateUI();
+            }
+        }
+
+        // 【修改】統一更新畫面狀態（按鈕禁用狀態 + 下拉選單當前選項）
+        function updateUI() {
             prevBtn.disabled = (currentChapter <= minChapter);
-            // 如果在最後一話，禁用「下一話」按鈕
             nextBtn.disabled = (currentChapter >= maxChapter);
+            chapterSelect.value = currentChapter; // 讓下拉選單同步顯示目前的話數
         }
     </script>
 
