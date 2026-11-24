@@ -45,7 +45,7 @@
             cursor: pointer;
         }
         iframe {
-            width: 100dvw;
+            width: 80dvw;
             height: 85dvh;
             border: 1px solid #ccc;
             background-color: white;
@@ -55,17 +55,18 @@
 <body>
 
     <div class="controls">
-        <p><a href="../../" target="_blank">返回首頁</a></p>
-        <button id="prevBtn" onclick="changeChapter(-1)">上一話</button>
-        
+        <button id="prevBtn" onclick="changeChapter(-1)">上一話</button>        
         <!-- 【修改】將原本的文字改成下拉選單，並加入 onchange 事件 -->
-        <select id="chapterSelect" onchange="jumpToChapter(this.value)"></select>
-        
+        <select id="chapterSelect" onchange="jumpToChapter(this.value)"></select>        
         <button id="nextBtn" onclick="changeChapter(1)">下一話</button>
-        <p><a href="../../gallery/new_megaten_player.html" target="_blank">返回作品目錄</a></p>
-        <p><a href="new_megaten_player_EX_reader.html" target="_blank">進入外傳閱讀器</a></p>
     </div>
 
+    <div>
+        <p><a href="../../" target="_blank">返回首頁</a> | </p>
+        <p><a href="../../gallery/new_megaten_player.html" target="_blank">返回作品目錄</a> | </p>
+        <p><a href="new_megaten_player_EX_reader.html" target="_blank">進入外傳閱讀器</a></p>
+    </div>
+    
     <!-- 預設載入 new_megaten_player_1.html -->
     <iframe id="contentFrame" src="new_megaten_player_1.html"></iframe>
 
